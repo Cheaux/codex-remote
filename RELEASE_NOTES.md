@@ -6,8 +6,9 @@ Requires Node 24+ and Codex signed in with ChatGPT, on an OS exposing the requir
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-npm install --global --prefix "$HOME/.local" --ignore-scripts \
+curl --fail --location --output codex-remote-0.1.0.tgz \
   https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.1.0.tgz
 codex-remote install
 codex-remote qr
 ```

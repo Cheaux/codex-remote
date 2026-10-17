@@ -66,8 +66,9 @@ Run the commands for your shell in a regular terminal on your computer. The Bash
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-npm install --global --prefix "$HOME/.local" --ignore-scripts \
+curl --fail --location --output codex-remote-0.1.0.tgz \
   https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.1.0.tgz
 codex-remote install
 codex-remote qr
 ```
@@ -75,12 +76,13 @@ codex-remote qr
 **PowerShell (Windows, untested):**
 
 ```powershell
-npm install --global --ignore-scripts https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
+Invoke-WebRequest -Uri https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz -OutFile codex-remote-0.1.0.tgz
+npm install --global --ignore-scripts .\codex-remote-0.1.0.tgz
 codex-remote install
 codex-remote qr
 ```
 
-The PowerShell commands use npm's default global installation directory. Native Codex must expose the same managed-server remote interface; installation alone does not establish OS compatibility.
+The PowerShell commands use npm's default global installation directory. Downloading the archive first also works with npm 12's default restriction on direct URL installs. Native Codex must expose the same managed-server remote interface; installation alone does not establish OS compatibility.
 
 `codex-remote install` registers the plugin with Codex. `codex-remote qr` enables persistent remote access if needed and displays a short-lived pairing code.
 

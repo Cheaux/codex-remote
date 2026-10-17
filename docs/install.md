@@ -28,19 +28,23 @@ For **Bash/Zsh on Linux or macOS**, run this in your regular terminal:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-npm install --global --prefix "$HOME/.local" --ignore-scripts \
+curl --fail --location --output codex-remote-0.1.0.tgz \
   {{ site.release_url }}
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.1.0.tgz
 codex-remote install
 ```
 
 For **PowerShell on Windows (untested)**:
 
 ```powershell
-npm install --global --ignore-scripts {{ site.release_url }}
+Invoke-WebRequest -Uri {{ site.release_url }} -OutFile codex-remote-0.1.0.tgz
+npm install --global --ignore-scripts .\codex-remote-0.1.0.tgz
 codex-remote install
 ```
 
-The Bash/Zsh installation uses your user directory; the PowerShell installation uses npm's default global prefix. The `.tgz` release already includes the built CLI and hidden plugin manifests. GitHub's automatic **Source code ZIP** is for development and does not include the built CLI.
+The Bash/Zsh installation uses your user directory; the PowerShell installation uses npm's default global prefix. Downloading first and installing the local archive works with npm 12's default restriction on direct URL installs. You can also download the `.tgz` from the release page in your browser and install that local file.
+
+The `.tgz` release already includes the built CLI and hidden plugin manifests. GitHub's automatic **Source code ZIP** is for development and does not include the built CLI.
 
 The install command registers the bundled `codex-remote-local` marketplace and `codex-remote` plugin in your selected Codex home. It does not enable remote access or restart the server.
 

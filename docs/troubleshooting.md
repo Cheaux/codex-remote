@@ -30,6 +30,10 @@ Run `codex-remote install`, then open a **new Codex terminal**. Already running 
 
 If you use a custom `CODEX_HOME`, use the same value during plugin installation and when opening Codex. Also ensure the Codex process can find `codex-remote` on PATH.
 
+## npm reports EALLOWREMOTE
+
+npm 12 blocks direct tarball-URL installs by default. Use the current [installation commands]({{ '/install/' | relative_url }}): download the release with curl, PowerShell, or your browser, then pass the local `.tgz` file to `npm install`. No global npm configuration change is needed. [npm's allow-remote setting](https://docs.npmjs.com/cli/using-npm/config/#allow-remote)
+
 ## `/qr` is missing from autocomplete
 
 The standalone Remote plugin does not register a built-in `/qr` slash command. That shortcut and its autocomplete require the separate Codex Folders terminal launcher.
