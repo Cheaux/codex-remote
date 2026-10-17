@@ -4,7 +4,9 @@
 [![Release](https://img.shields.io/github/v/release/Cheaux/codex-remote)](https://github.com/Cheaux/codex-remote/releases/latest)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**Connect Codex running on your Linux PC to the official ChatGPT phone app.** Generate a pairing QR, check connected devices, and manage remote access from your terminal or by asking Codex.
+**Connect Codex running on your computer to the official ChatGPT phone app.** Generate a pairing QR, check connected devices, and manage remote access from your terminal or by asking Codex.
+
+Use any operating system where Codex provides the required native managed-server remote interface. Linux is verified; macOS, Windows, and other operating systems are currently untested.
 
 Codex Remote is a community plugin by [Cheaux](https://github.com/Cheaux). It uses Codex's native remote service and your existing ChatGPT sign-in. OpenAI does not maintain or endorse this plugin.
 
@@ -25,7 +27,7 @@ The plugin uses the existing Codex daemon. It preserves local conversations and 
 
 You need:
 
-1. A **Linux PC** with **[Node.js 24 or newer](https://nodejs.org/en/download)**, including npm.
+1. A computer on **any OS** with **[Node.js 24 or newer](https://nodejs.org/en/download)**, including npm, and Codex's required native managed-server remote interface. See the [testing status](#compatibility) below.
 2. **[Codex CLI](https://learn.chatgpt.com/docs/cli/)** installed and signed in with ChatGPT. The tested Codex version is **0.163.0**.
 3. The official ChatGPT app on your phone, using the **same account and workspace** as Codex. Account or workspace policies may restrict remote access.
 4. An internet connection. Your PC must stay awake with Codex's managed server running while you use it remotely.
@@ -41,7 +43,9 @@ The native remote interface is experimental. **Android pairing and existing-chat
 
 ## Install and pair
 
-Run these commands in a regular terminal on your Linux PC. They install the built release into your user account; `sudo` is not needed.
+Run the commands for your shell in a regular terminal on your computer. The Bash/Zsh commands install into your user account without `sudo`.
+
+**Bash / Zsh (Linux or macOS):**
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
@@ -50,6 +54,16 @@ npm install --global --prefix "$HOME/.local" --ignore-scripts \
 codex-remote install
 codex-remote qr
 ```
+
+**PowerShell (Windows, untested):**
+
+```powershell
+npm install --global --ignore-scripts https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
+codex-remote install
+codex-remote qr
+```
+
+The PowerShell commands use npm's default global installation directory. Native Codex must expose the same managed-server remote interface; installation alone does not establish OS compatibility.
 
 `codex-remote install` registers the plugin with Codex. `codex-remote qr` enables persistent remote access if needed and displays a short-lived pairing code.
 
@@ -64,7 +78,7 @@ In that new Codex conversation, try:
 
 You only need a fresh QR when pairing another device or replacing an expired code. For an existing connection, ask **“Check my remote connection”** instead.
 
-If a new terminal cannot find `codex-remote`, add `export PATH="$HOME/.local/bin:$PATH"` to your shell's startup file. The [installation guide](https://cheaux.github.io/codex-remote/install/) explains this for Bash and Zsh.
+If a new Bash/Zsh terminal cannot find `codex-remote`, add `export PATH="$HOME/.local/bin:$PATH"` to your shell's startup file. For PowerShell, check that npm's global executable directory is on PATH. The [installation guide](https://cheaux.github.io/codex-remote/install/) explains both paths.
 
 ## Commands you will use
 
@@ -96,7 +110,8 @@ This standalone Remote release does not include that launcher. Without it, use `
 | iPhone pairing | Uses the same native link; end-to-end verification pending |
 | Creating a new chat from the phone | Verification pending |
 | Mobile approvals and steering an active task | Verification pending |
-| macOS or Windows hosts | Not supported by this release |
+| macOS or Windows hosts | Untested; requires a compatible native Codex managed-server remote interface |
+| Other operating systems | Untested; requires Node 24+ and the same native interface |
 | Sessions started with `--no-daemon` | Outside the shared server; not migrated by this plugin |
 
 A connected relay does not prove a phone has paired. Check both `status` and `devices list`. The plugin makes native remote features easier to access; it cannot bypass account restrictions or add missing native mobile features.
@@ -114,6 +129,8 @@ npm uninstall --global --prefix "$HOME/.local" codex-remote
 ```
 
 These removal commands preserve native device pairings and remote preferences. [More troubleshooting and answers](https://cheaux.github.io/codex-remote/troubleshooting/)
+
+On Windows, use the same two plugin removal commands, followed by `npm uninstall --global codex-remote` for the default-prefix installation above.
 
 ## How it works
 

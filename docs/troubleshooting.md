@@ -20,6 +20,8 @@ codex-remote --version
 
 For future terminals, add that export line once to `~/.zshrc` for Zsh or `~/.bashrc` for Bash. The [installation guide]({{ '/install/' | relative_url }}) uses `--prefix "$HOME/.local"`, so the executable is placed in `~/.local/bin`.
 
+For the Windows default-prefix installation, run `npm prefix --global` and check that directory is on PATH, then reopen PowerShell. macOS and Windows have not yet been verified end to end; the required native Codex interface must be available on the host.
+
 If `codex` itself is missing, install the official CLI and make it available on PATH. `CODEX_REMOTE_CODEX_BIN` can select a particular executable when needed.
 
 ## Codex cannot find the conversational tools
@@ -62,4 +64,4 @@ The plugin cannot persist a changed preference through the socket when no server
 
 ## Get help
 
-[Open an issue](https://github.com/Cheaux/codex-remote/issues/new/choose) with your Linux distribution, Node/Codex/Remote versions, phone OS, reproduction steps, and sanitized error. Do not include authentication files, pairing links, real QR codes, or private conversation content.
+[Open an issue](https://github.com/Cheaux/codex-remote/issues/new/choose) with your computer OS, Node/Codex/Remote versions, phone OS, reproduction steps, and sanitized error. Do not include authentication files, pairing links, real QR codes, or private conversation content.

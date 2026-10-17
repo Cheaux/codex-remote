@@ -1,13 +1,13 @@
 ---
 title: Control Codex CLI from your phone
-description: Connect terminal Codex on Linux to the official ChatGPT app. Install Codex Remote, scan a QR, and continue an existing chat from Android.
+description: Connect terminal Codex on your computer to the official ChatGPT app. Install Codex Remote, scan a QR, and continue an existing chat from Android.
 permalink: /
 ---
 {% include nav.html %}
 
 # Use Codex CLI from your phone
 
-**Codex Remote connects terminal Codex on your Linux PC to the official ChatGPT phone app.** Pair with a QR code, continue an existing chat, and manage remote devices from your terminal or by asking Codex.
+**Codex Remote connects terminal Codex on your computer to the official ChatGPT phone app.** Pair with a QR code, continue an existing chat, and manage remote devices from your terminal or by asking Codex.
 
 It is a community plugin by [Cheaux](https://github.com/Cheaux), using Codex's native remote service and your existing ChatGPT account. OpenAI does not maintain or endorse this project.
 
@@ -17,7 +17,7 @@ It is a community plugin by [Cheaux](https://github.com/Cheaux), using Codex's n
 
 ## What you need
 
-- A Linux PC with Node.js 24+ and Codex CLI signed in with ChatGPT.
+- A computer with Node.js 24+ and Codex CLI signed in with ChatGPT, on any OS that exposes the required native managed-server remote interface.
 - The official ChatGPT phone app, signed into the same account and workspace.
 - Your PC awake, online, and running Codex's managed server while you connect remotely.
 
@@ -39,7 +39,7 @@ The plugin preserves local sessions and existing pairings. There is no separate 
 
 Android pairing and continuing an existing conversation were verified on a real phone. iPhone uses the same native pairing link, but its end-to-end check is pending. New mobile chat creation, approvals, and steering also need further verification.
 
-This release supports Linux hosts. The native APIs are experimental; macOS and Windows hosts are not supported by this release. [Detailed compatibility and answers]({{ '/faq/' | relative_url }})
+Linux hosts are verified. macOS, Windows, and other operating systems are untested and need a compatible native managed-server remote interface. The native APIs are experimental. [Detailed compatibility and answers]({{ '/faq/' | relative_url }})
 
 ## Does this add `/qr` to Codex?
 

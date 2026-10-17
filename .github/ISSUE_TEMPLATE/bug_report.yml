@@ -15,7 +15,7 @@ body:
     id: versions
     attributes:
       label: Versions and environment
-      description: Linux distribution, Node version, Codex version, Codex Remote version, and phone OS.
+      description: Computer OS, Node version, Codex version, Codex Remote version, and phone OS.
     validations:
       required: true
   - type: textarea

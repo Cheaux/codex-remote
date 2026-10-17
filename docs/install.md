@@ -1,11 +1,11 @@
 ---
-title: Install Codex Remote on Linux
+title: Install Codex Remote on your computer
 description: Install the built Codex Remote release without sudo, register its plugin, configure PATH, and pair the ChatGPT phone app.
 permalink: /install/
 ---
 {% include nav.html %}
 
-# Install Codex Remote on Linux
+# Install Codex Remote on your computer
 
 These steps install the CLI into your user account and register its plugin with Codex. You do not need to build the source, create an API key, or install the separate Codex Folders launcher.
 
@@ -18,13 +18,13 @@ node --version
 codex --version
 ```
 
-Use a Linux PC. Codex **0.163.0** is the tested baseline; this plugin relies on its experimental native managed-server interface.
+Use any operating system where Codex exposes the required native managed-server remote interface. Linux with Codex **0.163.0** is the tested baseline. macOS, Windows, and other operating systems are untested; installing the package alone does not verify native compatibility.
 
 Install the official ChatGPT app on your phone and sign in with the same account and workspace. Some accounts or organizations may restrict remote access.
 
 ## 2. Install the built release
 
-Run this in your regular PC terminal:
+For **Bash/Zsh on Linux or macOS**, run this in your regular terminal:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
@@ -33,7 +33,14 @@ npm install --global --prefix "$HOME/.local" --ignore-scripts \
 codex-remote install
 ```
 
-No `sudo` is needed. The `.tgz` release already includes the built CLI and hidden plugin manifests. GitHub's automatic **Source code ZIP** is for development and does not include the built CLI.
+For **PowerShell on Windows (untested)**:
+
+```powershell
+npm install --global --ignore-scripts {{ site.release_url }}
+codex-remote install
+```
+
+The Bash/Zsh installation uses your user directory; the PowerShell installation uses npm's default global prefix. The `.tgz` release already includes the built CLI and hidden plugin manifests. GitHub's automatic **Source code ZIP** is for development and does not include the built CLI.
 
 The install command registers the bundled `codex-remote-local` marketplace and `codex-remote` plugin in your selected Codex home. It does not enable remote access or restart the server.
 
@@ -62,13 +69,13 @@ For an already paired phone, ask **“Check my remote connection”** to inspect
 
 ## Make the command available in future terminals
 
-If `codex-remote` is not found in a fresh terminal, put this line in the startup file for the shell you actually use:
+For the Bash/Zsh installation, if `codex-remote` is not found in a fresh terminal, put this line in the startup file for the shell you actually use:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-For Zsh, edit `~/.zshrc`. For Bash, edit `~/.bashrc`. Add the line once, save, then open a new terminal. Also make sure `codex` remains available on PATH. [PATH troubleshooting]({{ '/troubleshooting/' | relative_url }}#command-not-found)
+For Zsh, edit `~/.zshrc`. For Bash, edit `~/.bashrc`. Add the line once, save, then open a new terminal. For the Windows installation, run `npm prefix --global` and check that directory is on PATH, then reopen your terminal. Also make sure `codex` remains available on PATH. [PATH troubleshooting]({{ '/troubleshooting/' | relative_url }}#command-not-found)
 
 ## Update
 
@@ -91,3 +98,5 @@ npm uninstall --global --prefix "$HOME/.local" codex-remote
 ```
 
 Uninstallation alone preserves native remote preferences and device pairings. Use `devices revoke DEVICE_ID` before uninstalling if you also want to remove a particular paired device.
+
+For the Windows default-prefix installation, use `npm uninstall --global codex-remote` after the same plugin and marketplace removal commands.

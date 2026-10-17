@@ -7,7 +7,7 @@ permalink: /pairing/
 
 # Pair ChatGPT on your phone with terminal Codex
 
-First [install Codex Remote]({{ '/install/' | relative_url }}). Keep your Linux PC awake and online during pairing and remote use.
+First [install Codex Remote]({{ '/install/' | relative_url }}). Keep your computer awake and online during pairing and remote use.
 
 ## Show a pairing QR
 

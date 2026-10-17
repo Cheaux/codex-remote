@@ -9,7 +9,7 @@ permalink: /faq/
 
 ## Can I use Codex CLI from the ChatGPT phone app?
 
-Codex Remote exposes Codex's native remote pairing from terminal Codex on Linux. Install the plugin, generate a QR on the PC, and finish setup in the official ChatGPT phone app with the same account and workspace. Android pairing and continuing an existing chat were verified. [Get started]({{ '/install/' | relative_url }})
+Codex Remote exposes Codex's native remote pairing from terminal Codex on your computer. Install the plugin, generate a QR, and finish setup in the official ChatGPT phone app with the same account and workspace. Android pairing and continuing an existing chat were verified on a Linux host. [Get started]({{ '/install/' | relative_url }})
 
 ## Do I need the Codex desktop app?
 
@@ -25,7 +25,7 @@ Those capabilities depend on the native Codex/ChatGPT mobile experience. This pr
 
 ## Can I use a Windows or Mac PC?
 
-This release supports Linux hosts and their managed-server Unix socket interface. Windows and macOS hosts are outside the supported scope. The phone's operating system is a separate compatibility question.
+The project targets any OS where native Codex provides the required managed-server remote interface. Linux has been verified; Windows and macOS are currently untested, so compatibility is not yet confirmed. The installation guide includes Bash/Zsh and PowerShell commands. The phone's operating system is a separate compatibility question.
 
 ## Is this an official OpenAI plugin?
 

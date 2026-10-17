@@ -1,8 +1,8 @@
-Connect Codex CLI on your Linux PC to the official ChatGPT phone app through Codex's native remote service.
+Connect Codex CLI on your computer to the official ChatGPT phone app through Codex's native remote service.
 
 ### Install
 
-Requires Linux, Node 24+, and Codex signed in with ChatGPT. Codex 0.163.0 is the tested baseline.
+Requires Node 24+ and Codex signed in with ChatGPT, on an OS exposing the required native managed-server remote interface. Linux with Codex 0.163.0 is verified; macOS, Windows, and other operating systems are untested. These commands use Bash/Zsh; see the installation guide for PowerShell commands.
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
@@ -20,7 +20,7 @@ QR pairing, remote status, persistent enable/disable, paired-device management, 
 
 ### Verification and limitations
 
-Android pairing and continuing an existing chat were verified on a real phone. iPhone, new mobile chats, approvals, and steering remain unverified. The native APIs are experimental; account/workspace policies apply. Windows and macOS hosts are outside this release's support.
+Android pairing and continuing an existing chat were verified on a real phone with a Linux host. iPhone, new mobile chats, approvals, and steering remain unverified. The native APIs are experimental; account/workspace policies apply. Other computer operating systems are untested and require a compatible native interface.
 
 Download the `.tgz` asset below for installation. GitHub's automatic source ZIP does not include the built CLI. `SHA256SUMS` verifies the `.tgz` download.
 
