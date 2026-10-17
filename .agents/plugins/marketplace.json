@@ -1,0 +1,10 @@
+{
+  "name": "codex-remote-local",
+  "interface": { "displayName": "Codex Remote" },
+  "plugins": [{
+    "name": "codex-remote",
+    "source": { "source": "local", "path": "./plugins/codex-remote" },
+    "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+    "category": "Productivity"
+  }]
+}

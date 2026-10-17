@@ -1,0 +1,23 @@
+title: Codex Remote
+description: Pair Codex CLI on Linux with the official ChatGPT phone app. QR pairing, conversational setup, and remote device management.
+url: https://cheaux.github.io
+baseurl: /codex-remote
+lang: en
+theme: jekyll-theme-minimal
+repository: Cheaux/codex-remote
+show_downloads: false
+release_url: https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
+author:
+  name: Cheaux
+  url: https://github.com/Cheaux
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/social-card.png
+exclude:
+  - README.md

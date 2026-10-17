@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tgz
+coverage/
+artifacts/
+_site/
+.jekyll-cache/
+.sass-cache/
+validation/
+.env
+.env.*
+!.env.example
