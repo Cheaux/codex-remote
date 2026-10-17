@@ -28,17 +28,17 @@ For **Bash/Zsh on Linux or macOS**, run this in your regular terminal:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-remote-0.1.0.tgz \
+curl --fail --location --output codex-remote-0.2.0.tgz \
   {{ site.release_url }}
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.1.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.0.tgz
 codex-remote install
 ```
 
 For **PowerShell on Windows (untested)**:
 
 ```powershell
-Invoke-WebRequest -Uri {{ site.release_url }} -OutFile codex-remote-0.1.0.tgz
-npm install --global --ignore-scripts .\codex-remote-0.1.0.tgz
+Invoke-WebRequest -Uri {{ site.release_url }} -OutFile codex-remote-0.2.0.tgz
+npm install --global --ignore-scripts .\codex-remote-0.2.0.tgz
 codex-remote install
 ```
 
@@ -71,6 +71,18 @@ Open a **new Codex terminal** so it loads the installed plugin. Keep existing co
 
 For an already paired phone, ask **“Check my remote connection”** to inspect status without generating another code.
 
+## Optional: enable `/qr` and autocomplete
+
+Install [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions), then run:
+
+```sh
+codex-remote terminal enable
+```
+
+Open a new Codex terminal and type `/q` to see `/qr`. Folders is not required. The shared host currently supports Linux/macOS with Python 3; its Windows terminal backend is not implemented. Conversational pairing and the standalone CLI do not require it.
+
+The host owns one launcher and its command menu. Remote and Folders register independently, so disabling one feature leaves the other available. Use `codex-remote terminal disable` to remove only `/qr`.
+
 ## Make the command available in future terminals
 
 For the Bash/Zsh installation, if `codex-remote` is not found in a fresh terminal, put this line in the startup file for the shell you actually use:
@@ -87,7 +99,7 @@ Copy the installation command from the [latest release](https://github.com/Cheau
 
 ## Uninstall
 
-To turn off remote access as well as remove the plugin, first run:
+If you enabled `/qr`, first run `codex-remote terminal disable` to unregister it. To turn off remote access as well as remove the plugin, run:
 
 ```sh
 codex-remote disable

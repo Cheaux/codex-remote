@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "codex-remote",
+  "commands": [{
+    "name": "/qr",
+    "description": "pair ChatGPT mobile",
+    "action": {
+      "type": "view",
+      "executable": "${NODE}",
+      "args": ["${EXTENSION_ROOT}/dist/cli.js", "qr", "--interactive"],
+      "env": { "CODEX_REMOTE_CODEX_BIN": "${CODEX_BIN}" }
+    }
+  }]
+}

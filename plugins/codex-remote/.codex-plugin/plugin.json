@@ -1,6 +1,6 @@
 {
   "name": "codex-remote",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pair ChatGPT Android or iPhone with terminal Codex and manage remote access without restarting sessions.",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",

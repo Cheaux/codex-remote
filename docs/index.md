@@ -43,7 +43,7 @@ Linux hosts are verified. macOS, Windows, and other operating systems are untest
 
 ## Does this add `/qr` to Codex?
 
-The standalone plugin provides conversational pairing and the `codex-remote` command. `/qr` autocomplete is supplied by the separate Codex Folders terminal launcher. It is optional and is not included in this download.
+Yes, after enabling the shared [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions) host. Remote independently registers `/qr` and its description. Folders is not required. The host currently supports Linux/macOS; conversational pairing and the CLI work without it. [Set up the shortcut]({{ "/install/#optional-enable-qr-and-autocomplete" | relative_url }})
 
 ## Need help?
 

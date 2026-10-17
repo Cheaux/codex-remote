@@ -19,6 +19,9 @@ Run these commands in a regular PC terminal. Use `codex-remote --help` for the i
 | `codex-remote devices list` | List paired devices and their exact IDs. |
 | `codex-remote devices revoke DEVICE_ID` | Revoke the selected device on this host. |
 | `codex-remote install` | Register the packaged local marketplace and plugin with Codex. |
+| `codex-remote terminal enable` | Register `/qr` and enable the shared terminal host. |
+| `codex-remote terminal disable` | Unregister only Remote; keep other extensions. |
+| `codex-remote terminal status` | Inspect host and registration state. |
 | `codex-remote serve` | Run the plugin's MCP server over stdio; normally launched by Codex. |
 | `codex-remote --version` | Print the installed CLI version. |
 

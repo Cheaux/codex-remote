@@ -55,7 +55,7 @@ Keep real QR codes, pairing links, and manual codes private. The image in this d
 
 `codex-remote qr --interactive` opens a terminal view. **D** toggles link/manual-code details. **Enter**, **Escape**, or **Ctrl+C** exits the display. Exiting the display does not disable remote access.
 
-The separate Codex Folders terminal launcher uses this view for its `/qr` shortcut and autocomplete. Its retained-view behavior belongs to that launcher; the standalone Remote download does not install it.
+Remote registers this view as `/qr` with [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions). Run `codex-remote terminal enable` after installing the shared host and open a new terminal. Folders is not required. The host preserves your chat while the pairing view is open.
 
 ## Stop access or remove a device
 

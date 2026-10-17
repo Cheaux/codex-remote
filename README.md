@@ -33,6 +33,8 @@ After [installing the plugin](#install-and-pair), use these commands in your reg
 | `codex-remote devices revoke DEVICE_ID` | Remove the specific device you choose. |
 | `codex-remote disable` | Turn off remote access while preserving local sessions and pairings. |
 | `codex-remote enable` | Turn remote access back on. |
+| `codex-remote terminal enable` | Register `/qr` and enable the shared terminal host. |
+| `codex-remote terminal disable` | Remove `/qr` while preserving other terminal extensions. |
 
 **Remote access stays enabled until you disable it.** Uninstalling the plugin does not turn off native remote access. If you want it off, run `codex-remote disable` first. Disabling access and removing a paired device are separate actions.
 
@@ -66,9 +68,9 @@ Run the commands for your shell in a regular terminal on your computer. The Bash
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-remote-0.1.0.tgz \
-  https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.1.0.tgz
+curl --fail --location --output codex-remote-0.2.0.tgz \
+  https://github.com/Cheaux/codex-remote/releases/download/v0.2.0/codex-remote-0.2.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.0.tgz
 codex-remote install
 codex-remote qr
 ```
@@ -76,8 +78,8 @@ codex-remote qr
 **PowerShell (Windows, untested):**
 
 ```powershell
-Invoke-WebRequest -Uri https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz -OutFile codex-remote-0.1.0.tgz
-npm install --global --ignore-scripts .\codex-remote-0.1.0.tgz
+Invoke-WebRequest -Uri https://github.com/Cheaux/codex-remote/releases/download/v0.2.0/codex-remote-0.2.0.tgz -OutFile codex-remote-0.2.0.tgz
+npm install --global --ignore-scripts .\codex-remote-0.2.0.tgz
 codex-remote install
 codex-remote qr
 ```
@@ -99,11 +101,25 @@ You only need a fresh QR when pairing another device or replacing an expired cod
 
 If a new Bash/Zsh terminal cannot find `codex-remote`, add `export PATH="$HOME/.local/bin:$PATH"` to your shell's startup file. For PowerShell, check that npm's global executable directory is on PATH. The [installation guide](https://cheaux.github.io/codex-remote/install/) explains both paths.
 
-## Can I type `/qr` inside Codex?
+## Enable `/qr` and autocomplete
 
-**Only with the separate Codex Folders terminal launcher.** Its integration adds `/qr` and autocomplete beside Codex's native suggestions, then returns you to your retained chat.
+Install **[Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions)** once for terminal commands. **Codex Folders is not required.** Remote registers `/qr` with this shared host; other plugins register their own commands independently.
 
-This standalone Remote release does not include that launcher. Without it, use `codex-remote qr` in a regular terminal or ask Codex conversationally. Native plugin installation alone does not register `/qr` as a built-in slash command.
+On Linux/macOS with Python 3:
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+curl --fail --location --output codex-terminal-extensions-0.1.0.tgz \
+  https://github.com/Cheaux/codex-terminal-extensions/releases/download/v0.1.0/codex-terminal-extensions-0.1.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.0.tgz
+codex-remote terminal enable
+```
+
+Open a new `codex` terminal. Type **`/q`**, use **Tab** to complete `/qr`, and press **Enter**. Scan the QR, then press Enter to return to your retained chat. Arrows select custom or native commands; Escape dismisses suggestions.
+
+The shared host installs one user-local launcher, preserves the original Codex binary, and keeps active sessions running. Its current PTY backend supports Linux/macOS; Windows terminal integration requires a separate backend. CLI and conversational pairing remain independent of the host.
+
+`codex-remote install` registers `/qr` automatically when the host is available. `codex-remote terminal disable` unregisters only Remote's command and preserves other extensions. Use `codex-terminal disable` to remove the shared launcher itself.
 
 ## Compatibility
 
@@ -124,7 +140,7 @@ A connected relay does not prove a phone has paired. Check both `status` and `de
 
 To update, use the installation command from the [latest release](https://github.com/Cheaux/codex-remote/releases/latest), then run `codex-remote install` again. Open a new Codex terminal to load updated tools.
 
-To uninstall, first decide whether you also want native remote access disabled. If so, run `codex-remote disable`, then:
+To uninstall, unregister the optional terminal command with `codex-remote terminal disable` if you enabled it. First decide whether you also want native remote access disabled. If so, run `codex-remote disable`, then:
 
 ```sh
 codex plugin remove codex-remote@codex-remote-local

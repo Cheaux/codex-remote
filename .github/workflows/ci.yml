@@ -15,6 +15,15 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - uses: actions/checkout@v7.0.1
+        with:
+          repository: Cheaux/codex-terminal-extensions
+          ref: v0.1.0
+          path: .terminal-host
+      - run: npm ci --prefix .terminal-host
+      - run: npm run build --prefix .terminal-host
       - run: npm run check
       - run: npm test
+        env:
+          CODEX_TERMINAL_TEST_ROOT: ${{ github.workspace }}/.terminal-host
       - run: npm run test:package

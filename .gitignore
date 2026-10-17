@@ -10,3 +10,8 @@ validation/
 .env
 .env.*
 !.env.example
+
+.terminal-host/
+
+__pycache__/
+*.py[cod]

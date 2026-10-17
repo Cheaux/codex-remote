@@ -9,10 +9,12 @@ import { RemoteError, errorResult } from './errors.js';
 import { pairingTerminal } from './pairing.js';
 import { showPairing } from './terminal.js';
 import { serve } from './mcp.js';
+import { version } from './version.js';
+import { registerTerminal, terminalHost } from './terminal-host.js';
 
 const execute = promisify(execFile);
 const clean = (text: string) => stripVTControlCharacters(text).replace(/[\x00-\x08\x0b-\x1f\x7f-\x9f]/g, '');
-const help = `Codex Remote 0.1.0 — ChatGPT phone access to terminal Codex
+const help = `Codex Remote ${version} — ChatGPT phone access to terminal Codex
 
 codex-remote status [--json]           Check relay and paired devices
 codex-remote enable [--json]           Enable access until explicitly disabled
@@ -22,10 +24,13 @@ codex-remote disable [--json]          Disable access; keep local sessions runni
 codex-remote devices list [--json]     List paired devices and their IDs
 codex-remote devices revoke ID [--json] Revoke the chosen device
 codex-remote install [--json]          Install the local Codex plugin
+codex-remote terminal enable           Register /qr and enable the shared terminal host
+codex-remote terminal disable          Remove /qr; preserve other terminal extensions
+codex-remote terminal status           Inspect the shared terminal host
 codex-remote serve                    Run its MCP server over stdio
 
 After installing the plugin, ask Codex: "Show the QR for remote session pairing."
-Optional: the separate Codex Folders launcher adds /qr and its autocomplete menu.
+Codex Terminal Extensions adds /qr and autocomplete; Folders is not required.
 QR requests enable access if needed. Scan with Android/iPhone and finish in ChatGPT.
 No session copy, daemon restart, separate API key, or desktop app is required here.
 CODEX_HOME is respected; CODEX_REMOTE_CODEX_BIN can select the native Codex binary.
@@ -42,19 +47,26 @@ async function run() {
     json: { type: 'boolean' }, interactive: { type: 'boolean' }, help: { type: 'boolean', short: 'h' }, version: { type: 'boolean' },
   } });
   const [command = 'help', subcommand, id, ...extra] = positionals;
-  if (values.version) { console.log('0.1.0'); return; }
+  if (values.version) { console.log(version); return; }
   if (values.help || command === 'help') { console.log(help); return; }
   const json = !!values.json;
   const print = (value: unknown) => console.log(JSON.stringify(value, null, 2));
   if (values.interactive && (json || !['qr', 'pair'].includes(command) || !process.stdin.isTTY)) throw new RemoteError('invalid_arguments', '--interactive requires a terminal and a human pairing display.');
-  if (extra.length || (command !== 'devices' && subcommand !== undefined)) throw new RemoteError('invalid_arguments', 'Unexpected arguments. Run codex-remote --help.');
+  if (extra.length || (!['devices','terminal'].includes(command) && subcommand !== undefined)) throw new RemoteError('invalid_arguments', 'Unexpected arguments. Run codex-remote --help.');
+  if (command === 'terminal') {
+    if (id || !['enable','disable','status'].includes(subcommand || '')) throw new RemoteError('invalid_arguments', 'Use terminal enable, disable, or status.');
+    if (subcommand === 'enable') { await registerTerminal(); print(await terminalHost(['enable'])); }
+    else print(await terminalHost(subcommand === 'disable' ? ['unregister','codex-remote'] : ['status','--json']));
+    return;
+  }
   if (command === 'serve') { await serve(); return; }
   if (command === 'install') {
     const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
     const native = process.env.CODEX_REMOTE_CODEX_BIN || 'codex';
     await execute(native, ['plugin', 'marketplace', 'add', root, '--json'], { env: process.env, timeout: 45000 });
     const installed = await execute(native, ['plugin', 'add', 'codex-remote@codex-remote-local', '--json'], { env: process.env, timeout: 45000 });
-    const output = { installed: true, result: JSON.parse(installed.stdout), next: 'Start a new Codex terminal to load the plugin, then ask: "Show the QR for remote session pairing." Or run codex-remote qr directly. Keep existing sessions running. The optional /qr shortcut requires the separate Codex Folders launcher.' };
+    const terminal = await registerTerminal(true);
+    const output = { installed: true, result: JSON.parse(installed.stdout), terminal, next: 'Start a new Codex terminal to load the plugin, then ask: "Show the QR for remote session pairing." Or run codex-remote qr directly. Keep existing sessions running. For /qr and autocomplete, install Codex Terminal Extensions and run codex-remote terminal enable. Folders is not required.' };
     if (json) print(output); else console.log(output.next);
     return;
   }

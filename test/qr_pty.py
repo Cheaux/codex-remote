@@ -11,17 +11,18 @@ import sys
 import termios
 import time
 
-folders = pathlib.Path(sys.argv[1])
-sys.path.insert(0, str(folders / 'test'))
+host = pathlib.Path(sys.argv[1])
+sys.path.insert(0, str(host / 'test'))
 from terminal_screen import screen
 
 master, slave = pty.openpty()
 fcntl.ioctl(slave, termios.TIOCSWINSZ, struct.pack('HHHH', 35, 100, 0, 0))
 env = {**os.environ, 'TERM': 'xterm-256color',
-       'CODEX_FOLDERS_CODEX_BIN': str(folders / 'test/fixtures/codex'),
-       'CODEX_FOLDERS_TEST_TERMINAL': '1'}
-env.pop('CODEX_FOLDERS_WRAPPED', None)
-process = subprocess.Popen(['node', str(folders / 'dist/cli.js'), 'launch', '--',
+       'CODEX_TERMINAL_CODEX_BIN': str(host / 'test/fixtures/codex'),
+       'CODEX_TERMINAL_TEST_TERMINAL': '1',
+       'CODEX_TERMINAL_TEST_NATIVE_BIN': os.environ['CODEX_REMOTE_CODEX_BIN']}
+env.pop('CODEX_TERMINAL_WRAPPED', None)
+process = subprocess.Popen(['node', str(host / 'dist/cli.js'), 'launch', '--extension', str(pathlib.Path(__file__).resolve().parents[1] / 'terminal-extension.json'), '--',
                             '-m', 'fixture-model', '--sandbox', 'read-only'],
                            stdin=slave, stdout=slave, stderr=slave, env=env,
                            start_new_session=True)

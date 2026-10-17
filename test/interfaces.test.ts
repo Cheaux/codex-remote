@@ -1,4 +1,5 @@
 import test from 'node:test';
+import { version } from '../src/version.js';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -53,7 +54,7 @@ test('built CLI emits clean machine-readable status, pairing and validation erro
   const run = (args: string[]) => execute(process.execPath, ['dist/cli.js', ...args], { env });
   const status = JSON.parse((await run(['status', '--json'])).stdout); assert.equal(status.pairing, 'paired');
   const pair = JSON.parse((await run(['qr', '--json'])).stdout); assert.equal(new URL(pair.pairingUrl).hostname, 'chatgpt.com');
-  assert.equal((await run(['--version'])).stdout.trim(), '0.1.0');
+  assert.equal((await run(['--version'])).stdout.trim(), version);
   await assert.rejects(run(['devices', 'revoke', '--json']), (error: any) => { assert.equal(error.code, 1); assert.equal(JSON.parse(error.stdout).error.code, 'invalid_arguments'); return true; });
   await assert.rejects(run(['qr', 'unexpected', '--json']), (error: any) => { assert.equal(JSON.parse(error.stdout).error.code, 'invalid_arguments'); return true; });
 });
@@ -68,12 +69,12 @@ test('packaged stdio MCP is callable without stdout diagnostics contaminating th
 });
 test('/qr opens a scannable terminal view and returns to the retained chat', async t => {
   const { nativeStub, root, state } = await fixture(t);
-  const folders = resolve('../codex-folders');
-  if (!existsSync(join(folders, 'dist/cli.js'))) { t.skip('Codex Folders integration checkout is not available'); return; }
+  const host = resolve(process.env.CODEX_TERMINAL_TEST_ROOT || '../codex-terminal-extensions');
+  if (!existsSync(join(host, 'dist/cli.js'))) { t.skip('Shared terminal host checkout is not available'); return; }
   await mkdir(join(root, 'bin'));
   await symlink(resolve('dist/cli.js'), join(root, 'bin/codex-remote'));
-  const env = { ...process.env, CODEX_REMOTE_CODEX_BIN: nativeStub, PATH: `${join(root, 'bin')}:${process.env.PATH}`, CODEX_FOLDERS_DATA_DIR: join(root, 'folders') };
-  const output = await execute('python3', ['test/qr_pty.py', folders], { env, timeout: 60000 });
+  const env = { ...process.env, CODEX_REMOTE_CODEX_BIN: nativeStub, PATH: `${join(root, 'bin')}:${process.env.PATH}`, CODEX_TERMINAL_DATA_DIR: join(root, 'folders') };
+  const output = await execute('python3', ['test/qr_pty.py', host], { env, timeout: 60000 });
   assert.match(output.stdout, /retained chat/);
   assert.equal(state.calls.filter(c => c.method === 'remoteControl/pairing/start').length, 1);
   assert.equal(state.calls.some(c => /enable|disable|revoke/.test(c.method)), false);

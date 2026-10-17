@@ -39,9 +39,9 @@ It uses your existing native ChatGPT login and Codex remote service. There is no
 
 The plugin uses the existing daemon's socket APIs and does not restart it. An explicit pairing or enable request can start the managed server if none exists. Open a new Codex terminal to load newly installed MCP tools while leaving existing chats running.
 
-## Why does `/qr` need Codex Folders?
+## Does `/qr` require Codex Folders?
 
-The separate Folders terminal launcher supplies slash-command interception and autocomplete. The Remote plugin itself supplies native pairing, MCP tools, and its standalone CLI. Use `codex-remote qr` or a conversational request if you do not use that launcher.
+No. Remote registers `/qr` with the shared [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions) host. Folders independently registers its own commands with the same host. Install the host once, run `codex-remote terminal enable`, and open a new Codex terminal. CLI and conversational pairing do not need the host.
 
 ## Does closing the terminal QR display turn off access?
 

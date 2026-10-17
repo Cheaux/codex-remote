@@ -16,14 +16,14 @@ let connected = false;
 try {
   const packed = JSON.parse((await execute('npm', ['pack', '--json', '--ignore-scripts', '--pack-destination', root])).stdout);
   const pack = Array.isArray(packed) ? packed[0] : Object.values(packed)[0];
-  const required = ['dist/cli.js', '.agents/plugins/marketplace.json', 'plugins/codex-remote/.codex-plugin/plugin.json', 'plugins/codex-remote/.mcp.json', 'plugins/codex-remote/skills/remote-pairing/SKILL.md'];
+  const required = ['dist/cli.js', 'terminal-extension.json', '.agents/plugins/marketplace.json', 'plugins/codex-remote/.codex-plugin/plugin.json', 'plugins/codex-remote/.mcp.json', 'plugins/codex-remote/skills/remote-pairing/SKILL.md'];
   for (const path of required) assert.ok(pack.files.some(file => file.path === path), `Missing ${path}`);
   for (const file of pack.files) assert.ok(!/^(src|test|validation|node_modules|\.github)\//.test(file.path), `Unexpected ${file.path}`);
   const prefix = join(root, 'prefix');
   await execute('npm', ['install', '--global', '--prefix', prefix, '--ignore-scripts', '--no-audit', '--no-fund', join(root, pack.filename)], { timeout: 180000 });
   const binary = join(prefix, 'bin/codex-remote');
   assert.equal((await execute(binary, ['--version'])).stdout.trim(), source.version);
-  assert.match((await execute(binary, ['--help'])).stdout, /optional.*Codex Folders/i);
+  assert.match((await execute(binary, ['--help'])).stdout, /Codex Terminal Extensions/);
   const installed = join(prefix, 'lib/node_modules/codex-remote');
   const manifest = JSON.parse(await readFile(join(installed, 'plugins/codex-remote/.codex-plugin/plugin.json'), 'utf8'));
   assert.equal(manifest.version, source.version);

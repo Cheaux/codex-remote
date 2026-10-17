@@ -21,7 +21,7 @@ npm test
 npm run test:package
 ```
 
-The core tests use an isolated native-protocol fixture and do not need a ChatGPT account or an active Codex daemon. The optional `/qr` integration test is skipped when a built sibling `../codex-folders` checkout is absent. Do not report that skip as a successful launcher test.
+The core tests use an isolated native-protocol fixture and do not need a ChatGPT account or an active Codex daemon. The optional `/qr` integration test is skipped when a built sibling `../codex-terminal-extensions` (or `CODEX_TERMINAL_TEST_ROOT`) checkout is absent. CI checks out the published host and runs this integration independently of Folders. Do not report a skip as a successful launcher test.
 
 The package smoke builds and installs a temporary release archive, checks hidden plugin manifests and installation arguments, and starts its MCP server to list the six tools. It never enables native access.
 
@@ -56,7 +56,7 @@ The Documentation workflow builds proposed documentation on pull requests and de
 ## Publish a release — maintainer
 
 1. Merge the release changes into `main` after CI passes.
-2. Set the new version in `package.json`, the lockfile, the plugin manifest, and the version/help strings in `src/cli.ts` and `src/mcp.ts`. The package smoke catches a mismatched CLI or plugin version.
+2. Set the new version in `package.json`, the lockfile, the plugin manifest, and confirm the CLI/MCP version from `src/version.ts`, which reads package metadata. The package smoke catches a mismatched CLI or plugin version.
 3. Update the versioned installation URL in the README, `docs/install.md`, and `docs/_config.yml`. Replace `RELEASE_NOTES.md` with the notes for this version and add a dated entry to `CHANGELOG.md`.
 4. Run all three checks above. Review the staged files and release notes, commit the release preparation, and push it to `main`.
 5. Tag the release and push the tag. For the initial release:
@@ -64,8 +64,8 @@ The Documentation workflow builds proposed documentation on pull requests and de
 ```sh
 git switch main
 git pull --ff-only
-git tag -a v0.1.0 -m "Codex Remote v0.1.0"
-git push origin v0.1.0
+git tag -a v0.2.0 -m "Codex Remote v0.2.0"
+git push origin v0.2.0
 ```
 
 For later releases, substitute the new version. The Release workflow verifies the tag, runs checks, builds the installable `.tgz`, creates `SHA256SUMS`, and publishes the GitHub release. No npm registry token is required. If a workflow fails, inspect its logs before retrying; never overwrite a published version with different code.

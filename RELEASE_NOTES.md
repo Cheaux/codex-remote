@@ -6,9 +6,9 @@ Requires Node 24+ and Codex signed in with ChatGPT, on an OS exposing the requir
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-remote-0.1.0.tgz \
-  https://github.com/Cheaux/codex-remote/releases/download/v0.1.0/codex-remote-0.1.0.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.1.0.tgz
+curl --fail --location --output codex-remote-0.2.0.tgz \
+  https://github.com/Cheaux/codex-remote/releases/download/v0.2.0/codex-remote-0.2.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.0.tgz
 codex-remote install
 codex-remote qr
 ```
@@ -17,7 +17,7 @@ Scan the QR and finish setup on your phone with the same account and workspace. 
 
 ### Included
 
-QR pairing, remote status, persistent enable/disable, paired-device management, six MCP tools, and a conversational pairing skill. Access stays enabled until explicitly disabled. The separate Codex Folders launcher is needed only for `/qr` autocomplete.
+QR pairing, remote status, persistent enable/disable, paired-device management, six MCP tools, and a conversational pairing skill. Access stays enabled until explicitly disabled. Remote now registers `/qr` independently with [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions). Folders is not required. Install the shared host, run `codex-remote terminal enable`, and open a new Codex terminal. Its current backend supports Linux/macOS; CLI/MCP pairing remains independent.
 
 ### Verification and limitations
 

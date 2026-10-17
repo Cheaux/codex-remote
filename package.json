@@ -1,6 +1,6 @@
 {
   "name": "codex-remote",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pair ChatGPT mobile with terminal Codex without restarting active sessions",
   "type": "module",
   "license": "MIT",
@@ -10,8 +10,21 @@
     "url": "git+https://github.com/Cheaux/codex-remote.git"
   },
   "homepage": "https://cheaux.github.io/codex-remote/",
-  "bugs": { "url": "https://github.com/Cheaux/codex-remote/issues" },
-  "keywords": ["codex", "codex-cli", "codex-plugin", "chatgpt", "remote-control", "android", "phone-pairing", "mcp", "linux", "qr-code"],
+  "bugs": {
+    "url": "https://github.com/Cheaux/codex-remote/issues"
+  },
+  "keywords": [
+    "codex",
+    "codex-cli",
+    "codex-plugin",
+    "chatgpt",
+    "remote-control",
+    "android",
+    "phone-pairing",
+    "mcp",
+    "linux",
+    "qr-code"
+  ],
   "engines": {
     "node": ">=24"
   },
@@ -23,7 +36,8 @@
     "plugins",
     ".agents",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "terminal-extension.json"
   ],
   "scripts": {
     "build": "node scripts/build.mjs",

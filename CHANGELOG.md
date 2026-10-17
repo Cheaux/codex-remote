@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — 2026-10-17
+
+- `/qr` now registers with Codex Terminal Extensions independently of Folders.
+- Added terminal enable/disable/status commands; installation registers when the host is present.
+- Native phone pairing, MCP tools, saved devices, and active sessions retain their existing behavior.
+- Terminal integration tests now run against the shared host without a Folders checkout.
+
 ## 0.1.0 — 2026-10-17
 
 Initial public release.

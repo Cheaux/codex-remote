@@ -1,3 +1,4 @@
+import { version } from './version.js';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import type { CallToolResult } from '@modelcontextprotocol/sdk/types.js';
@@ -7,7 +8,7 @@ import { errorResult } from './errors.js';
 import { pairingPng, pairingText } from './pairing.js';
 
 export function createMcpServer(service = new RemoteService()) {
-  const server = new McpServer({ name: 'codex-remote', version: '0.1.0' });
+  const server = new McpServer({ name: 'codex-remote', version });
   const tool = (name: string, description: string, inputSchema: z.ZodRawShape, readOnly: boolean, destructive: boolean, idempotent: boolean, run: (args: any) => Promise<CallToolResult>) => {
     server.registerTool(name, { description, inputSchema, annotations: { readOnlyHint: readOnly, destructiveHint: destructive, idempotentHint: idempotent, openWorldHint: true } }, async args => {
       try { return await run(args); }
