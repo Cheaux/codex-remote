@@ -21,6 +21,23 @@ Codex Remote is a community plugin by [Cheaux](https://github.com/Cheaux). It us
 
 The plugin uses the existing Codex daemon. It preserves local conversations and existing pairings, requires no separate API key, and opens no additional network listener.
 
+## Commands you will use
+
+After [installing the plugin](#install-and-pair), use these commands in your regular terminal.
+
+| Command | What it does |
+| --- | --- |
+| `codex-remote qr` | Show a fresh QR, phone link, manual code, and expiration. Enables access if needed. |
+| `codex-remote status` | Check the remote relay and paired devices. |
+| `codex-remote devices list` | Show device names and IDs. |
+| `codex-remote devices revoke DEVICE_ID` | Remove the specific device you choose. |
+| `codex-remote disable` | Turn off remote access while preserving local sessions and pairings. |
+| `codex-remote enable` | Turn remote access back on. |
+
+**Remote access stays enabled until you disable it.** Uninstalling the plugin does not turn off native remote access. If you want it off, run `codex-remote disable` first. Disabling access and removing a paired device are separate actions.
+
+`pair` is an alias for `qr`. Commands support `--json` for scripts. [Full command reference](https://cheaux.github.io/codex-remote/commands/)
+
 ![Illustration of the terminal pairing display. The sample QR is demonstration data, not a working pairing code.](docs/assets/pairing-demo.svg)
 
 ## Before you install
@@ -79,21 +96,6 @@ In that new Codex conversation, try:
 You only need a fresh QR when pairing another device or replacing an expired code. For an existing connection, ask **“Check my remote connection”** instead.
 
 If a new Bash/Zsh terminal cannot find `codex-remote`, add `export PATH="$HOME/.local/bin:$PATH"` to your shell's startup file. For PowerShell, check that npm's global executable directory is on PATH. The [installation guide](https://cheaux.github.io/codex-remote/install/) explains both paths.
-
-## Commands you will use
-
-| Command | What it does |
-| --- | --- |
-| `codex-remote qr` | Show a fresh QR, phone link, manual code, and expiration. Enables access if needed. |
-| `codex-remote status` | Check the remote relay and paired devices. |
-| `codex-remote devices list` | Show device names and IDs. |
-| `codex-remote devices revoke DEVICE_ID` | Remove the specific device you choose. |
-| `codex-remote disable` | Turn off remote access while preserving local sessions and pairings. |
-| `codex-remote enable` | Turn remote access back on. |
-
-**Remote access stays enabled until you disable it.** Uninstalling the plugin does not turn off native remote access. If you want it off, run `codex-remote disable` first. Disabling access and removing a paired device are separate actions.
-
-`pair` is an alias for `qr`. Commands support `--json` for scripts. [Full command reference](https://cheaux.github.io/codex-remote/commands/)
 
 ## Can I type `/qr` inside Codex?
 
