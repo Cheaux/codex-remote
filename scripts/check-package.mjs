@@ -23,7 +23,7 @@ try {
   await execute('npm', ['install', '--global', '--prefix', prefix, '--ignore-scripts', '--no-audit', '--no-fund', join(root, pack.filename)], { timeout: 180000 });
   const binary = join(prefix, 'bin/codex-remote');
   assert.equal((await execute(binary, ['--version'])).stdout.trim(), source.version);
-  assert.match((await execute(binary, ['--help'])).stdout, /Codex Terminal Extensions/);
+  assert.match((await execute(binary, ['--help'])).stdout, /Codex Command Extensions/);
   const installed = join(prefix, 'lib/node_modules/codex-remote');
   const manifest = JSON.parse(await readFile(join(installed, 'plugins/codex-remote/.codex-plugin/plugin.json'), 'utf8'));
   assert.equal(manifest.version, source.version);

@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.2.1
+
+- Updated shared-host references to Codex Command Extensions. Added official-directory draft ZIP packaging, listing metadata, icons, public data/license information and proposed review cases.
+
 ## 0.2.0 — 2026-10-17
 
-- `/qr` now registers with Codex Terminal Extensions independently of Folders.
+- `/qr` now registers with Codex Command Extensions independently of Folders.
 - Added terminal enable/disable/status commands; installation registers when the host is present.
 - Native phone pairing, MCP tools, saved devices, and active sessions retain their existing behavior.
 - Terminal integration tests now run against the shared host without a Folders checkout.

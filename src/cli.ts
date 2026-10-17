@@ -30,7 +30,7 @@ codex-remote terminal status           Inspect the shared terminal host
 codex-remote serve                    Run its MCP server over stdio
 
 After installing the plugin, ask Codex: "Show the QR for remote session pairing."
-Codex Terminal Extensions adds /qr and autocomplete; Folders is not required.
+Codex Command Extensions adds /qr and autocomplete; Folders is not required.
 QR requests enable access if needed. Scan with Android/iPhone and finish in ChatGPT.
 No session copy, daemon restart, separate API key, or desktop app is required here.
 CODEX_HOME is respected; CODEX_REMOTE_CODEX_BIN can select the native Codex binary.
@@ -66,7 +66,7 @@ async function run() {
     await execute(native, ['plugin', 'marketplace', 'add', root, '--json'], { env: process.env, timeout: 45000 });
     const installed = await execute(native, ['plugin', 'add', 'codex-remote@codex-remote-local', '--json'], { env: process.env, timeout: 45000 });
     const terminal = await registerTerminal(true);
-    const output = { installed: true, result: JSON.parse(installed.stdout), terminal, next: 'Start a new Codex terminal to load the plugin, then ask: "Show the QR for remote session pairing." Or run codex-remote qr directly. Keep existing sessions running. For /qr and autocomplete, install Codex Terminal Extensions and run codex-remote terminal enable. Folders is not required.' };
+    const output = { installed: true, result: JSON.parse(installed.stdout), terminal, next: 'Start a new Codex terminal to load the plugin, then ask: "Show the QR for remote session pairing." Or run codex-remote qr directly. Keep existing sessions running. For /qr and autocomplete, install Codex Command Extensions and run codex-remote terminal enable. Folders is not required.' };
     if (json) print(output); else console.log(output.next);
     return;
   }

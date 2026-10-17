@@ -6,7 +6,7 @@ lang: en
 theme: jekyll-theme-minimal
 repository: Cheaux/codex-remote
 show_downloads: false
-release_url: https://github.com/Cheaux/codex-remote/releases/download/v0.2.0/codex-remote-0.2.0.tgz
+release_url: https://github.com/Cheaux/codex-remote/releases/download/v0.2.1/codex-remote-0.2.1.tgz
 author:
   name: Cheaux
   url: https://github.com/Cheaux

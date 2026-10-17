@@ -1,6 +1,6 @@
 {
   "name": "codex-remote",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Pair ChatGPT mobile with terminal Codex without restarting active sessions",
   "type": "module",
   "license": "MIT",
@@ -44,7 +44,8 @@
     "check": "tsc --noEmit",
     "test": "npm run build && node --import tsx --test test/*.test.ts",
     "test:package": "npm run build && node scripts/check-package.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "package:directory": "python3 scripts/package-directory.py"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.32.1",

@@ -41,7 +41,7 @@ The plugin uses the existing daemon's socket APIs and does not restart it. An ex
 
 ## Does `/qr` require Codex Folders?
 
-No. Remote registers `/qr` with the shared [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions) host. Folders independently registers its own commands with the same host. Install the host once, run `codex-remote terminal enable`, and open a new Codex terminal. CLI and conversational pairing do not need the host.
+No. Remote registers `/qr` with the shared [Codex Command Extensions](https://github.com/Cheaux/codex-command-extensions) host. Folders independently registers its own commands with the same host. Install the host once, run `codex-remote terminal enable`, and open a new Codex terminal. CLI and conversational pairing do not need the host.
 
 ## Does closing the terminal QR display turn off access?
 

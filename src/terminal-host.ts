@@ -9,7 +9,7 @@ export async function terminalHost(args: string[], optional = false) {
     return JSON.parse(result.stdout);
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT' && optional) return { available: false, registered: false };
-    throw new RemoteError('terminal_host_unavailable', 'Install Codex Terminal Extensions for /qr, then run codex-remote terminal enable. CLI and conversational pairing work independently.');
+    throw new RemoteError('terminal_host_unavailable', 'Install Codex Command Extensions for /qr, then run codex-remote terminal enable. CLI and conversational pairing work independently.');
   }
 }
 export async function registerTerminal(optional = false) {

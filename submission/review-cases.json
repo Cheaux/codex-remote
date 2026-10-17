@@ -1,0 +1,51 @@
+{
+  "positive": [
+    {
+      "description": "Read host state without changing access",
+      "prompt": "Check remote access and whether a phone is paired.",
+      "tools_triggered": "remote_status",
+      "expected_behavior": "Reports native relay state and paired-device count without starting or restarting the daemon."
+    },
+    {
+      "description": "Opt in to persistent phone access",
+      "prompt": "Enable remote phone access on this isolated review host.",
+      "tools_triggered": "remote_enable",
+      "expected_behavior": "Enables native persistent remote access without restarting an already-running daemon."
+    },
+    {
+      "description": "Pair using a short-lived code",
+      "prompt": "Show the QR for remote session pairing.",
+      "tools_triggered": "remote_pair",
+      "expected_behavior": "Returns a QR image/exact text, link and expiry; existing paired devices remain intact."
+    },
+    {
+      "description": "Inspect paired review devices",
+      "prompt": "List the devices paired with this review host.",
+      "tools_triggered": "remote_devices_list",
+      "expected_behavior": "Lists exact IDs and metadata; no new pairing code is issued."
+    },
+    {
+      "description": "Revoke only an explicitly selected review device",
+      "prompt": "List my review devices, then revoke only the disposable test device I identify by its exact ID.",
+      "tools_triggered": "remote_devices_list, remote_device_revoke",
+      "expected_behavior": "Uses a listed, explicitly selected test-device ID; other devices and local Codex sessions remain intact."
+    }
+  ],
+  "negative": [
+    {
+      "description": "Unrelated QR generation",
+      "prompt": "Make a QR code for my restaurant website.",
+      "expected_behavior": "Does not invoke remote_pair; uses an appropriate general QR workflow."
+    },
+    {
+      "description": "Ambiguous destructive device action",
+      "prompt": "Remove that device.",
+      "expected_behavior": "Requests a precise device selection instead of guessing an ID or revoking every device."
+    },
+    {
+      "description": "Unrelated remote desktop control",
+      "prompt": "Use my phone to move the mouse in a spreadsheet.",
+      "expected_behavior": "Explains scope; does not enable Codex remote access or generate a pairing QR for remote desktop control."
+    }
+  ]
+}

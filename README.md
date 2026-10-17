@@ -68,9 +68,9 @@ Run the commands for your shell in a regular terminal on your computer. The Bash
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-remote-0.2.0.tgz \
-  https://github.com/Cheaux/codex-remote/releases/download/v0.2.0/codex-remote-0.2.0.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.0.tgz
+curl --fail --location --output codex-remote-0.2.1.tgz \
+  https://github.com/Cheaux/codex-remote/releases/download/v0.2.1/codex-remote-0.2.1.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.1.tgz
 codex-remote install
 codex-remote qr
 ```
@@ -78,8 +78,8 @@ codex-remote qr
 **PowerShell (Windows, untested):**
 
 ```powershell
-Invoke-WebRequest -Uri https://github.com/Cheaux/codex-remote/releases/download/v0.2.0/codex-remote-0.2.0.tgz -OutFile codex-remote-0.2.0.tgz
-npm install --global --ignore-scripts .\codex-remote-0.2.0.tgz
+Invoke-WebRequest -Uri https://github.com/Cheaux/codex-remote/releases/download/v0.2.1/codex-remote-0.2.1.tgz -OutFile codex-remote-0.2.1.tgz
+npm install --global --ignore-scripts .\codex-remote-0.2.1.tgz
 codex-remote install
 codex-remote qr
 ```
@@ -103,15 +103,15 @@ If a new Bash/Zsh terminal cannot find `codex-remote`, add `export PATH="$HOME/.
 
 ## Enable `/qr` and autocomplete
 
-Install **[Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions)** once for terminal commands. **Codex Folders is not required.** Remote registers `/qr` with this shared host; other plugins register their own commands independently.
+Install **[Codex Command Extensions](https://github.com/Cheaux/codex-command-extensions)** once for terminal commands. **Codex Folders is not required.** Remote registers `/qr` with this shared host; other plugins register their own commands independently.
 
 On Linux/macOS with Python 3:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-terminal-extensions-0.1.0.tgz \
-  https://github.com/Cheaux/codex-terminal-extensions/releases/download/v0.1.0/codex-terminal-extensions-0.1.0.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.0.tgz
+curl --fail --location --output codex-terminal-extensions-0.1.1.tgz \
+  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.1/codex-terminal-extensions-0.1.1.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.1.tgz
 codex-remote terminal enable
 ```
 
@@ -167,3 +167,7 @@ Official references: [Codex app-server](https://learn.chatgpt.com/docs/app-serve
 See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, checks, and the release workflow. Start with the [issue tracker](https://github.com/Cheaux/codex-remote/issues) for bugs or suggestions.
 
 This project is licensed under [MIT](LICENSE).
+
+## Official directory status
+
+GitHub releases are available. This plugin has **not been submitted to or approved for the official ChatGPT/Codex plugin directory**. [Submission preparation](submission/README.md), [data handling](PRIVACY.md), and [license/service information](TERMS.md) are public.

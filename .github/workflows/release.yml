@@ -18,7 +18,7 @@ jobs:
       - run: npm ci
       - uses: actions/checkout@v7.0.1
         with:
-          repository: Cheaux/codex-terminal-extensions
+          repository: Cheaux/codex-command-extensions
           ref: v0.1.0
           path: .terminal-host
       - run: npm ci --prefix .terminal-host
@@ -34,10 +34,11 @@ jobs:
         run: |
           mkdir -p artifacts
           npm pack --pack-destination artifacts
+          npm run package:directory
           cd artifacts
-          sha256sum codex-remote-*.tgz > SHA256SUMS
+          sha256sum codex-remote-*.tgz *.zip > SHA256SUMS
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$RELEASE_TAG" artifacts/*.tgz artifacts/SHA256SUMS --verify-tag --title "Codex Remote $RELEASE_TAG" --notes-file RELEASE_NOTES.md --latest
+        run: gh release create "$RELEASE_TAG" artifacts/*.tgz artifacts/*.zip artifacts/SHA256SUMS --verify-tag --title "Codex Remote $RELEASE_TAG" --notes-file RELEASE_NOTES.md --latest

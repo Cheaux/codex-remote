@@ -28,17 +28,17 @@ For **Bash/Zsh on Linux or macOS**, run this in your regular terminal:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-remote-0.2.0.tgz \
+curl --fail --location --output codex-remote-0.2.1.tgz \
   {{ site.release_url }}
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.0.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-remote-0.2.1.tgz
 codex-remote install
 ```
 
 For **PowerShell on Windows (untested)**:
 
 ```powershell
-Invoke-WebRequest -Uri {{ site.release_url }} -OutFile codex-remote-0.2.0.tgz
-npm install --global --ignore-scripts .\codex-remote-0.2.0.tgz
+Invoke-WebRequest -Uri {{ site.release_url }} -OutFile codex-remote-0.2.1.tgz
+npm install --global --ignore-scripts .\codex-remote-0.2.1.tgz
 codex-remote install
 ```
 
@@ -73,7 +73,7 @@ For an already paired phone, ask **“Check my remote connection”** to inspect
 
 ## Optional: enable `/qr` and autocomplete
 
-Install [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions), then run:
+Install [Codex Command Extensions](https://github.com/Cheaux/codex-command-extensions), then run:
 
 ```sh
 codex-remote terminal enable

@@ -36,7 +36,7 @@ npm 12 blocks direct tarball-URL installs by default. Use the current [installat
 
 ## `/qr` is missing from autocomplete
 
-Install [Codex Terminal Extensions](https://github.com/Cheaux/codex-terminal-extensions), run `codex-remote terminal enable`, and open a new Codex terminal. Check `codex-terminal status --json` for the `codex-remote` registration and `/qr`. Folders is not required. The current terminal host supports Linux/macOS; Windows needs another backend.
+Install [Codex Command Extensions](https://github.com/Cheaux/codex-command-extensions), run `codex-remote terminal enable`, and open a new Codex terminal. Check `codex-terminal status --json` for the `codex-remote` registration and `/qr`. Folders is not required. The current terminal host supports Linux/macOS; Windows needs another backend.
 
 Use `codex-remote qr` in a regular terminal or ask Codex **“Show the QR for remote session pairing.”** Neither route requires Folders.
 

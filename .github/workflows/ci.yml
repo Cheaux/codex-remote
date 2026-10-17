@@ -17,7 +17,7 @@ jobs:
       - run: npm ci
       - uses: actions/checkout@v7.0.1
         with:
-          repository: Cheaux/codex-terminal-extensions
+          repository: Cheaux/codex-command-extensions
           ref: v0.1.0
           path: .terminal-host
       - run: npm ci --prefix .terminal-host
@@ -27,3 +27,4 @@ jobs:
         env:
           CODEX_TERMINAL_TEST_ROOT: ${{ github.workspace }}/.terminal-host
       - run: npm run test:package
+      - run: npm run package:directory
