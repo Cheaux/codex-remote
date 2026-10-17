@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v7.0.1
         with:
           repository: Cheaux/codex-command-extensions
-          ref: v0.1.0
+          ref: v0.1.2
           path: .terminal-host
       - run: npm ci --prefix .terminal-host
       - run: npm run build --prefix .terminal-host

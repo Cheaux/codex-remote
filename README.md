@@ -109,9 +109,9 @@ On Linux/macOS with Python 3:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-curl --fail --location --output codex-terminal-extensions-0.1.1.tgz \
-  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.1/codex-terminal-extensions-0.1.1.tgz
-npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.1.tgz
+curl --fail --location --output codex-terminal-extensions-0.1.2.tgz \
+  https://github.com/Cheaux/codex-command-extensions/releases/download/v0.1.2/codex-terminal-extensions-0.1.2.tgz
+npm install --global --prefix "$HOME/.local" --ignore-scripts ./codex-terminal-extensions-0.1.2.tgz
 codex-remote terminal enable
 ```
 
