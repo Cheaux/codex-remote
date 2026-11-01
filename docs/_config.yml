@@ -1,5 +1,6 @@
 title: Codex Remote
-description: Pair Codex CLI on your computer with the official ChatGPT phone app. QR pairing, conversational setup, and remote device management.
+description: Use Codex CLI from your phone through ChatGPT mobile QR pairing. Manage paired devices and remote access. Linux and Android verified; community plugin.
+project_version: "0.2.1"
 url: https://cheaux.github.io
 baseurl: /codex-remote
 lang: en

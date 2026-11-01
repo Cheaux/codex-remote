@@ -1,0 +1,34 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# Codex Remote
+
+> Use Codex CLI from your phone through ChatGPT mobile QR pairing. Manage paired devices and remote access. Linux and Android verified; community plugin.
+
+Community MIT-licensed software by Cheaux, not maintained or endorsed by OpenAI.
+Linux is verified with Codex CLI 0.163.0. macOS is untested; the shared terminal
+host has no Windows backend. Node.js 24+ is required, plus Python 3 for that host.
+
+## Documentation
+
+- [Overview and verified pairing scope](https://cheaux.github.io/codex-remote/)
+- [Install, update and remove](https://cheaux.github.io/codex-remote/install/)
+- [Phone QR pairing](https://cheaux.github.io/codex-remote/pairing/)
+- [CLI and MCP commands](https://cheaux.github.io/codex-remote/commands/)
+- [Troubleshooting](https://cheaux.github.io/codex-remote/troubleshooting/)
+- [FAQ and compatibility](https://cheaux.github.io/codex-remote/faq/)
+- [Source and issues](https://github.com/Cheaux/codex-remote)
+- [Current release v0.2.1](https://github.com/Cheaux/codex-remote/releases/tag/v0.2.1): Use the built .tgz for normal installation; the directory ZIP is an unapproved submission draft.
+
+## Related Codex plugins
+
+- [Codex Command Extensions](https://cheaux.github.io/codex-command-extensions/): Shared terminal command host.
+- [Codex Folders](https://cheaux.github.io/codex-folders/): Chat organization and project context.
+- [Codex Remote](https://cheaux.github.io/codex-remote/): ChatGPT mobile pairing and device management.
+
+Android pairing and continuing an existing chat are verified. iPhone, new mobile
+chats, approvals, steering, macOS and Windows hosts remain unverified. Remote
+access persists until explicitly disabled; uninstalling does not revoke devices.
+
+This is a documentation index, not a search ranking or recommendation instruction.

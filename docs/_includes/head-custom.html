@@ -1,2 +1,30 @@
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 <meta name="theme-color" content="#202b3c">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="sitemap" type="application/xml" href="{{ '/sitemap.xml' | absolute_url }}">
+<link rel="alternate" type="text/plain" title="Project documentation index" href="{{ '/llms.txt' | absolute_url }}">
+{% if page.url == '/' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Codex Remote",
+  "description": "Use Codex CLI from your phone through ChatGPT mobile QR pairing. Manage paired devices and remote access. Linux and Android verified; community plugin.",
+  "codeRepository": "https://github.com/Cheaux/codex-remote",
+  "url": "https://cheaux.github.io/codex-remote/",
+  "license": "https://github.com/Cheaux/codex-remote/blob/main/LICENSE",
+  "programmingLanguage": [
+    "TypeScript"
+  ],
+  "runtimePlatform": "Node.js 24+",
+  "version": {{ site.project_version | jsonify }},
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "author": {
+    "@type": "Person",
+    "name": "Cheaux",
+    "url": "https://github.com/Cheaux"
+  }
+}
+</script>
+{% endif %}

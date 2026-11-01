@@ -1,7 +1,7 @@
 {
   "name": "codex-remote",
   "version": "0.2.1",
-  "description": "Pair ChatGPT mobile with terminal Codex without restarting active sessions",
+  "description": "Use Codex CLI from your phone through ChatGPT mobile QR pairing. Manage paired devices and remote access. Linux and Android verified; community plugin.",
   "type": "module",
   "license": "MIT",
   "author": "Cheaux",
@@ -14,16 +14,22 @@
     "url": "https://github.com/Cheaux/codex-remote/issues"
   },
   "keywords": [
+    "android",
+    "chatgpt",
     "codex",
     "codex-cli",
     "codex-plugin",
-    "chatgpt",
-    "remote-control",
-    "android",
-    "phone-pairing",
-    "mcp",
+    "openai-codex",
     "linux",
-    "qr-code"
+    "mcp",
+    "model-context-protocol",
+    "qr-code",
+    "phone-pairing",
+    "remote-control",
+    "terminal",
+    "nodejs",
+    "typescript",
+    "developer-tools"
   ],
   "engines": {
     "node": ">=24"

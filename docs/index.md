@@ -48,3 +48,15 @@ Yes, after enabling the shared [Codex Command Extensions](https://github.com/Che
 ## Need help?
 
 Start with [troubleshooting]({{ '/troubleshooting/' | relative_url }}), the [command reference]({{ '/commands/' | relative_url }}), or [open an issue](https://github.com/Cheaux/codex-remote/issues/new/choose). Do not include real QR codes or pairing links in public reports.
+
+## Which Codex plugin do I need?
+
+| Project | Use it for |
+| --- | --- |
+| [Codex Folders](https://cheaux.github.io/codex-folders/) | Organize chats into folders and share project instructions and local briefs. |
+| [Codex Remote](https://cheaux.github.io/codex-remote/) | Pair the ChatGPT phone app with native Codex and manage remote devices. |
+| [Codex Command Extensions](https://cheaux.github.io/codex-command-extensions/) | Add slash-command autocomplete and terminal views for independently installed providers. |
+
+Folders and Remote are independent features. Install the shared host for their terminal shortcuts; their CLI/MCP tools can work without it. Linux is the verified host platform. Each project's compatibility guide describes its untested cases.
+
+[Plain-text documentation index]({{ '/llms.txt' | relative_url }})
