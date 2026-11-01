@@ -1,6 +1,6 @@
 ---
-title: Pair ChatGPT on your phone with terminal Codex
-description: Generate a Codex pairing QR, scan it in the phone setup flow, confirm a paired device, and handle expired codes without restarting chats.
+title: Pair your phone with Codex CLI
+description: Pair your phone with terminal Codex, check connected devices and replace expired QR codes while keeping existing chats running.
 permalink: /pairing/
 ---
 {% include nav.html %}

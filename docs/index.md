@@ -1,6 +1,6 @@
 ---
 title: Control Codex CLI from your phone
-description: Connect terminal Codex on your computer to the official ChatGPT app. Install Codex Remote, scan a QR, and continue an existing chat from Android.
+description: Pair Codex CLI with the ChatGPT phone app using a QR code. Linux and Android tested; setup, device management and troubleshooting.
 permalink: /
 ---
 {% include nav.html %}
@@ -13,7 +13,7 @@ It is a community plugin by [Cheaux](https://github.com/Cheaux), using Codex's n
 
 **[Install Codex Remote]({{ '/install/' | relative_url }})** · [Download the release](https://github.com/Cheaux/codex-remote/releases/latest) · [View the source](https://github.com/Cheaux/codex-remote)
 
-![Illustration of terminal pairing with a demonstration QR, not a real credential.]({{ '/assets/pairing-demo.svg' | relative_url }})
+<img src="{{ '/assets/pairing-demo.svg' | relative_url }}" width="760" height="410" alt="Illustration of terminal pairing with a demonstration QR, not a real credential.">
 
 ## What you need
 

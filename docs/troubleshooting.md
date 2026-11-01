@@ -1,6 +1,6 @@
 ---
-title: Fix Codex Remote installation and phone pairing
-description: Troubleshoot command not found, missing plugin tools, expired pairing codes, workspace restrictions, and disconnected Codex phone sessions.
+title: Fix Codex phone pairing
+description: Fix Codex Remote setup, missing commands, expired QR codes, workspace restrictions and disconnected phone sessions with focused checks.
 permalink: /troubleshooting/
 ---
 {% include nav.html %}

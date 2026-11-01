@@ -1,6 +1,6 @@
 ---
 title: Codex phone control FAQ and compatibility
-description: Answers about using ChatGPT mobile with Codex CLI, Android and iPhone testing, desktop app requirements, remote access, and optional slash commands.
+description: Answers about Codex phone pairing, Android and iPhone testing, remote access, account requirements and optional /qr commands.
 permalink: /faq/
 ---
 {% include nav.html %}
